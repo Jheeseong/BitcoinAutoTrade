@@ -2,8 +2,8 @@ import time
 import pybithumb
 import datetime
 
-access = "c15d88ebfd1258f8ce17113a27ae13c5"
-secret = "7fe7f2afc7e34433306c84f37c3be737"
+access = "access"
+secret = "secret"
 bithumb = pybithumb.Bithumb(access, secret)
 
 # 변경성 돌파 전략으로 매수 목표가 조회
