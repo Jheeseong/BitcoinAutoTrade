@@ -21,8 +21,8 @@ from xcoin_api_client import *
 import pprint
 
 
-api_key = "c15d88ebfd1258f8ce17113a27ae13c5";
-api_secret = "7fe7f2afc7e34433306c84f37c3be737";
+api_key = "";
+api_secret = "";
 
 api = XCoinAPI(api_key, api_secret);
 

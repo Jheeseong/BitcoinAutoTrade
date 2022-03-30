@@ -30,6 +30,7 @@ while True:
             #sell_crypto_currency("BTC")
     
         current_price = pybithumb.get_current_price("BTC")
+        
         print("current_price: ", current_price)       
         print("mid = ", mid)
         print("target = ", target_price) 

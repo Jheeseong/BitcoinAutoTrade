@@ -4,11 +4,13 @@ import numpy as np
 import time
 import datetime
 
-def get_ror(k=0.5):
-    df = pybithumb.get_ohlcv("BTC").tail(365)
-    df['ma5'] = df['close'].rolling(window=5).mean().shift(1)
-    df['range'] = (df['high'] - df['low']) * k
-    df['target'] = df['open'] + df['range'].shift(1)
+def get_ror():
+    df = pybithumb.get_ohlcv("BTC").tail(60)
+    df['noise'] = 1 - abs(df['open'] - df['close']) / (df['high'] - df['low'])
+    df['noise_ma20'] = df['noise'].rolling(window=20, min_periods=1).mean()
+    df['ma5'] = df['close'].rolling(window=15).mean().shift(1)
+    df['range'] = (df['high'] - df['low']) * 0.5
+    df['target'] = df['open'] + df['range'].shift(1) * df['noise_ma20']
     df['bull'] = df['open'] > df['ma5']
     
     fee = 0.0032
@@ -25,6 +27,7 @@ def get_ror(k=0.5):
     ror = df['ror'].cumprod()[-2]
     return ror
 
-for k in np.arange(0.1, 1.0, 0.1):
-    ror = get_ror(k)
-    print("%.1f %f" % (k, ror))
+get_ror()
+# for k in np.arange(0.1, 1.0, 0.1):
+#     ror = get_ror(k)
+#     print("%.1f %f" % (k, ror))
