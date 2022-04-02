@@ -5,7 +5,7 @@ import time
 import datetime
 
 def get_ror():
-    df = pybithumb.get_ohlcv("BTC").tail(60)
+    df = pybithumb.get_ohlcv("BTC").tail()
     df['noise'] = 1 - abs(df['open'] - df['close']) / (df['high'] - df['low'])
     df['noise_ma20'] = df['noise'].rolling(window=20, min_periods=1).mean()
     df['ma5'] = df['close'].rolling(window=15).mean().shift(1)
