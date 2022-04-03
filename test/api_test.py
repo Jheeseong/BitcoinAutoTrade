@@ -17,55 +17,59 @@
 # python setup.py install
 
 import sys
-from xcoin_api_client import *
 import pprint
+import pybithumb
 
 
-api_key = "";
-api_secret = "";
+api_key = "c15d88ebfd1258f8ce17113a27ae13c5";
+api_secret = "7fe7f2afc7e34433306c84f37c3be737";
+bithumb = pybithumb.Bithumb(api_key, api_secret)
 
-api = XCoinAPI(api_key, api_secret);
+unit = unit = bithumb.get_balance("SAND")[0]
+print(unit)
 
-rgParams = {
-	"order_currency" : "BTC",
-	"payment_currency" : "KRW"
-};
+# api = XCoinAPI(api_key, api_secret);
 
-
-#
-# public api
-#
-# /public/ticker
-# /public/recent_ticker
-# /public/orderbook
-# /public/recent_transactions
-
-result = api.xcoinApiCall("/public/ticker", rgParams);
-print("status: " + result["status"]);
-print("last: " + result["data"]["closing_price"]);
-#print("sell: " + result["data"]["sell_price"]);
-#print("buy: " + result["data"]["buy_price"]);
+# rgParams = {
+# 	"order_currency" : "BTC",
+# 	"payment_currency" : "KRW"
+# };
 
 
-#
-# private api
-#
-# endpoint		=> parameters
-# /info/current
-# /info/account
-# /info/balance
-# /info/wallet_address
+# #
+# # public api
+# #
+# # /public/ticker
+# # /public/recent_ticker
+# # /public/orderbook
+# # /public/recent_transactions
 
-result = api.xcoinApiCall("/info/ticker", rgParams);
-print("status:" + result["status"]);
-print("data:" + result["data"]["opening_price"]);
+# result = api.xcoinApiCall("/public/ticker", rgParams);
+# print("status: " + result["status"]);
+# print("last: " + result["data"]["closing_price"]);
+# #print("sell: " + result["data"]["sell_price"]);
+# #print("buy: " + result["data"]["buy_price"]);
 
-result = api.xcoinApiCall("/info/account", rgParams);
-print("status: " + result["status"]);
-print("created: " + result["data"]["created"]);
-print("account id: " + result["data"]["account_id"]);
-print("trade fee: " + result["data"]["trade_fee"]);
-print("balance: " + result["data"]["balance"]);
 
-sys.exit(0);
+# #
+# # private api
+# #
+# # endpoint		=> parameters
+# # /info/current
+# # /info/account
+# # /info/balance
+# # /info/wallet_address
+
+# result = api.xcoinApiCall("/info/ticker", rgParams);
+# print("status:" + result["status"]);
+# print("data:" + result["data"]["opening_price"]);
+
+# result = api.xcoinApiCall("/info/account", rgParams);
+# print("status: " + result["status"]);
+# print("created: " + result["data"]["created"]);
+# print("account id: " + result["data"]["account_id"]);
+# print("trade fee: " + result["data"]["trade_fee"]);
+# print("balance: " + result["data"]["balance"]);
+
+# sys.exit(0);
 

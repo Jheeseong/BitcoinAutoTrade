@@ -21,7 +21,7 @@ while True:
     try:
         now = datetime.datetime.now()
         print(now)
-        if mid < now < mid + datetime.delta(seconds=10): 
+        if mid < now < mid + datetime.timedelta(seconds=10): 
             target_price = get_target_price("BTC")
             print(target_price)
             mid = datetime.datetime(now.year, now.month, now.day, 9) + datetime.timedelta(days=1)
