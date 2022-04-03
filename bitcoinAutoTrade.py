@@ -53,7 +53,7 @@ access = "c15d88ebfd1258f8ce17113a27ae13c5"
 secret = "7fe7f2afc7e34433306c84f37c3be737"
 bithumb = pybithumb.Bithumb(access, secret)
 
-myToken = "xoxb-3348226843249-3337959274820-giot9PkDxkp3iFBo6z8ukBfU"
+myToken = "xoxb-3348226843249-3337959274820-CU2f0XUxBQZS6PcMM7pP2B0y"
 
 now = datetime.datetime.now()
 mid = datetime.datetime(now.year, now.month, now.day) + datetime.timedelta(1)
