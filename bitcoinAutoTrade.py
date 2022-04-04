@@ -49,11 +49,11 @@ def get_yesterday_ma15(ticker):
     ma = close.rolling(15).mean()
     return ma[-2]
 
-access = "c15d88ebfd1258f8ce17113a27ae13c5"
-secret = "7fe7f2afc7e34433306c84f37c3be737"
+access = ""
+secret = ""
 bithumb = pybithumb.Bithumb(access, secret)
 
-myToken = "xoxb-3348226843249-3337959274820-CU2f0XUxBQZS6PcMM7pP2B0y"
+myToken = ""
 
 now = datetime.datetime.now()
 mid = datetime.datetime(now.year, now.month, now.day) + datetime.timedelta(1)
@@ -77,6 +77,7 @@ while True:
         current_price = pybithumb.get_current_price(coin)      
         print("current price =", current_price)  
         print("target_price", target_price)
+
         if (current_price > target_price) and (current_price > ma15):
             buy_crypto_currency(coin)        
     except:
